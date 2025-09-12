@@ -68,27 +68,39 @@ class CustomBurgerBuilder(BurgerBuilder):
 
     def add_sauce(self, has):
         self.burger.sauce = has
+
+class Director:
+    def __init__(self, builder: BurgerBuilder):
+        self.builder = builder
+
+    def create_beef_burger(self):
+        self.builder.set_bun("Ржана чорна булка")
+        self.builder.set_meat("Соковита яловичина")
+        self.builder.add_salad(True)
+        self.builder.add_tomato(True)
+        self.builder.add_cheese(False)
+        self.builder.add_sauce(False)
+        return self.builder.get_result()
+
+    def create_chicken_burger(self):
+        self.builder.set_bun("Біла булка")
+        self.builder.set_meat("Соковита курка")
+        self.builder.add_salad(False)
+        self.builder.add_tomato(True)
+        self.builder.add_cheese(True)
+        self.builder.add_sauce(True)
+        return self.builder.get_result()
+
+# === Использование ===
 if __name__ == "__main__":
-    builder1 = CustomBurgerBuilder()
+    builder = CustomBurgerBuilder()
+    director = Director(builder)
 
-    builder1.set_bun("Ржана чорна булка")
-    builder1.set_meat("Соковита яловичина")
-    builder1.add_salad(True)
-    builder1.add_tomato(True)
-    builder1.add_cheese(False)
-    builder1.add_sauce(False)
-
-    burger1 = builder1.get_result()
+    # Автоматическая сборка по "рецепту"
+    burger1 = director.create_beef_burger()
     print(burger1)
 
-    builder2 = CustomBurgerBuilder()
-
-    builder2.set_bun("біла булка")
-    builder2.set_meat("Соковита курка")
-    builder2.add_salad(False)
-    builder2.add_tomato(True)
-    builder2.add_cheese(True)
-    builder2.add_sauce(True)
-
-    burger2 = builder2.get_result()
+    burger2 = director.create_chicken_burger()
     print(burger2)
+
+
