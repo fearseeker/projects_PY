@@ -17,10 +17,10 @@ class Clone(RealOne):
         self.items = items if items else []
 
     def clone(self):
-        return Clone(self.name, self.number, self.items)
+        return copy.copy(self)
 
     def deepcopy(self):
-        return Clone(self.name, self.number, self.items.copy())
+        return copy.deepcopy(self)
 
     def add_item(self, item):
         self.items.append(item)
