@@ -27,7 +27,7 @@ class GameFactory(ABC):
         pass
 
 class MobaFactory(GameFactory):
-    def __init__(self, game_type="dota"):
+    def __init__(self, game_type):
         self.game_type = game_type
 
     def create_game(self):
@@ -38,7 +38,7 @@ class MobaFactory(GameFactory):
 
 
 class ShooterFactory(GameFactory):
-    def __init__(self, game_type="csgo"):
+    def __init__(self, game_type):
         self.game_type = game_type
 
     def create_game(self):
@@ -57,7 +57,7 @@ class GameClient:
         print(f"Запускаем игру: {game.type_game()}")
 
 if __name__ == "__main__":
-    print("--- MOBA игры ---")
+    print("MOBA игры ")
     moba_factory = MobaFactory("dota")
     client1 = GameClient(moba_factory)
     client1.play_game()
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     client2 = GameClient(moba_factory2)
     client2.play_game()
 
-    print("\n--- Shooter игры ---")
+    print("\nShooter игры ")
     shooter_factory = ShooterFactory("csgo")
     client3 = GameClient(shooter_factory)
     client3.play_game()

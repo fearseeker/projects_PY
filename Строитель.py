@@ -91,15 +91,11 @@ class Director:
         self.builder.add_sauce(True)
         return self.builder.get_result()
 
-# === Использование ===
 if __name__ == "__main__":
     builder = CustomBurgerBuilder()
     director = Director(builder)
-
-    # Автоматическая сборка по "рецепту"
     burger1 = director.create_beef_burger()
     print(burger1)
-
     burger2 = director.create_chicken_burger()
     print(burger2)
 
