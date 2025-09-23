@@ -24,7 +24,7 @@ class SMSNotifier(NotifierDecorator):
 class ViberNotifier(NotifierDecorator):
     def send(self, message):
         super().send(message)
-        print(f"Отправка в Slack: {message}")
+        print(f"Отправка в Viber: {message}")
 
 
 if __name__ == "__main__":
